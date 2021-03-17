@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_user_logged_in, only: [:index, :show]
+  
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
   end
@@ -20,6 +22,25 @@ class UsersController < ApplicationController
     else
       flash[:danger] = '登録に失敗しました'
       render :new
+    end
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to root_url
+    end
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    
+    if @user.update(user_params)
+      flash[:success] = '正常に変更されました'
+      redirect_to @user
+    else
+      flash.now[:danger] = '変更されませんでした'
+      render :edit
     end
   end
   
