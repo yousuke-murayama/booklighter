@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   
   def index
     @rooms = Room.all
-    @room = current_user.rooms.build(user_id: current_user.id)
+    @room = current_user.rooms.build
   end
 
   def show
@@ -14,7 +14,6 @@ class RoomsController < ApplicationController
 
   def create
     @room = current_user.rooms.build(room_params)
-    @room.user_id = current_user.id
     if @room.save
       flash[:success] = 'トークルームを作成しました！'
       redirect_to rooms_path
@@ -27,6 +26,6 @@ class RoomsController < ApplicationController
   private
   
   def room_params
-    params.require(:room).permit(:title, :user_id)
+    params.require(:room).permit(:title)
   end
 end

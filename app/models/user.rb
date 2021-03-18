@@ -8,5 +8,20 @@ class User < ApplicationRecord
     
     has_many :rooms
     has_many :messages
-    has_many :rooms, through: :messages
+    
+    has_many :favorites
+    has_many :like_messages, through: :favorites, source: :message, dependent: :destroy
+    
+    def add_favorite(message)
+        self.favorites.find_or_create_by(message_id: message.id)
+    end
+    
+    def unfavorite(message)
+        favorite = self.favorites.find_by(message_id: message.id)
+        favorite.destroy if favorite
+    end
+    
+    def adding_favorite?(message)
+        self.like_messages.include?(message)
+    end
 end

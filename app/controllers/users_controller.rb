@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
+  before_action :require_user_logged_in, only: [:index, :show, :edit, :update, :likes]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @messages = @user.messages
   end
 
   def new
@@ -42,6 +43,11 @@ class UsersController < ApplicationController
       flash.now[:danger] = '変更されませんでした'
       render :edit
     end
+  end
+  
+  def likes
+    @user = User.find(params[:id])
+    @like_messages = @user.like_messages
   end
   
   private

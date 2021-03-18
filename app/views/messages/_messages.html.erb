@@ -4,15 +4,16 @@
       <img class="mr-2 rounded" src="<%= gravatar_url(message.user, { size: 50 }) %>" alt="">
       <div class="media-body">
         <div>
-          <%= link_to message.user.name, user_path(message.user) %> <span class="text-muted">posted at <%= message.created_at %></span>
+          <%= link_to message.user.name, user_path(message.user) %> <span class="text-muted">投稿日時 <%= message.created_at %></span>
         </div>
         <div>
           <p><%= message.content %></p>
         </div>
-         <div>
+         <div class="btn btn-group">
           <% if current_user == message.user %>
             <%= link_to "削除", message, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
           <% end %>
+          <%= render 'favorites/favorites_button', message: message %>
         </div>
       </div>
     </li>
