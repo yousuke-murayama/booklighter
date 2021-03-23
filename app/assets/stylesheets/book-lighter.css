@@ -1,0 +1,38 @@
+/* トップページのデザイン */
+.point {
+    border: double  5px  #00ff00 
+}
+
+.main {
+    text-align: center
+}
+
+.news {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    border: 1px solid #808000;
+    border-radius: 2px;
+}
+
+
+/* トークルームのデザイン */
+.balloon {
+  position: relative;
+  padding: 20px;
+  background-color: #eeffff;
+  border: 2px solid #800080;
+}
+
+body {
+    background-color: #f5fffa;
+}
+
+.unlike-btn {
+    color: #ffd700;
+}
+
+h2.room-title {
+    margin-bottom: 30px;
+    background-color: #ccccff
+}
+

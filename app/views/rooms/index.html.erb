@@ -17,6 +17,7 @@
                 <% end %>
         </tbody>
     </table>
+    <%= paginate @rooms %>
 <% end %>
 
 <div class="border-top text-center border-info mt-5">
@@ -29,8 +30,8 @@
         <div class="form-group">
             <%= f.label :title, 'タイトル' %>
             <%= f.text_field :title, class: 'form-control' %>
-        </div>
             <%= f.submit '作成', class: 'btn btn-primary btn-block ' %>
-        <% end %>
+            <% end %>
+        </div>
     </div>
 </div>

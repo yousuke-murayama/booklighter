@@ -6,8 +6,11 @@
         <div>
           <%= link_to message.user.name, user_path(message.user) %> <span class="text-muted">投稿日時 <%= message.created_at %></span>
         </div>
-        <div>
+        <div class="balloon">
           <p><%= message.content %></p>
+        </div>
+        <div>
+          <p>ルーム名：<%= link_to message.room.title, room_path(message.room) %></p>
         </div>
          <div class="btn btn-group">
           <% if current_user == message.user %>

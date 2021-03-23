@@ -14,10 +14,10 @@
   </div>
 </div>
 
-  <div class="col-sm-8">
+  <div class="col-sm-8 mt-4">
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><%= link_to 'メッセージ一覧', user_path(@user), class: 'nav-link' %></li>
-      <li class="nav-item"><%= link_to 'お気に入り一覧', likes_user_path(@user), class: 'nav-link' %>
+      <li class="nav-item"><%= link_to 'お気に入り一覧', likes_user_path(@user), class: 'nav-link active' %>
     </ul>
     <%= render 'messages/messages', messages: @like_messages %>
   </div>

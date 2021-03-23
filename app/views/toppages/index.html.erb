@@ -1,5 +1,33 @@
 <% if logged_in? %>
-  <p><%= current_user.name %></p>
+  <section id="wrapper">
+    
+    <div class="point">
+      <h2>このサイトについて</h2>
+      <p>このサイトはユーザとのディスカッションを通じて，読書の理解を深めるサイトです。</p>
+    </div>
+    
+    <div class="main">
+      <div class="border border-info mt-4">
+        <h2>メニュー</h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <h2><%= link_to 'トークルーム一覧', rooms_path, class: 'btn btn-block btn-primary' %></h2>
+        </div>
+        <div class="col-sm-6">
+          <h2><%= link_to 'ユーザ一覧', users_path, class: 'btn btn-block btn-primary' %></h2>
+        </div>
+      </div>
+    </div>
+    
+    <div class="news">
+      <h2 class="border-bottom border-dark text-center">お知らせ</h2>
+      <ul>
+        <li>ここにお知らせが入ります。</li>
+      </ul>
+    </div>
+    
+  </section>
 <% else %>
   <div class="center jumbotron bg-primary">
     <div class="text-center text-warning">

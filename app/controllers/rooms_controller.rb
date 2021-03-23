@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   before_action :require_user_logged_in
   
   def index
-    @rooms = Room.all
+    @rooms = Room.order(id: :desc).page(params[:page])
     @room = current_user.rooms.build
   end
 
