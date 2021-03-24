@@ -1,23 +1,29 @@
 <ul class="list-unstyled">
   <% messages.each do |message| %>
     <li class="media mb-3">
-      <img class="mr-2 rounded" src="<%= gravatar_url(message.user, { size: 50 }) %>" alt="">
+      <% if message.user.image? %>
+          <%= image_tag message.user.image.thumb.url, class: "user-icon" %>
+        <% else %>
+          <%= image_tag "/assets/default.jpg", :size => '70x70', class: "user-icon" %>
+        <% end %>
       <div class="media-body">
-        <div>
+        <div class="post">
           <%= link_to message.user.name, user_path(message.user) %> <span class="text-muted">投稿日時 <%= message.created_at %></span>
         </div>
         <div class="balloon">
           <p><%= message.content %></p>
         </div>
-        <div>
-          <p>ルーム名：<%= link_to message.room.title, room_path(message.room) %></p>
-        </div>
-         <div class="btn btn-group">
-          <% if current_user == message.user %>
-            <%= link_to "削除", message, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
-          <%= render 'favorites/favorites_button', message: message %>
-        </div>
+          <div class="flex">
+            <div class="room-name">
+              <p>ルーム名：<%= link_to message.room.title, room_path(message.room) %></p>
+            </div>
+             <div class="btn btn-group">
+              <% if current_user == message.user %>
+                <%= link_to "削除", message, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+              <% end %>
+              <%= render 'favorites/favorites_button', message: message %>
+            </div>
+          </div>
       </div>
     </li>
   <% end %>

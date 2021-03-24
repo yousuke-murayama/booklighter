@@ -1,20 +1,20 @@
-<div class="row">
-  <aside class="col-sm-4">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title"><%= @user.name %></h3>
+  <div class="user-deta">
+      <div class="user-image">
+        <% if @user.image? %>
+          <%= image_tag @user.image.thumb.url, class: "user-icon" %>
+        <% else %>
+          <%= image_tag "/assets/default.jpg", :size => '70x70', class: "user-icon" %>
+        <% end %>
       </div>
-      <div class="card-body">
-        <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 100 }) %>" alt="">
+      <div class="user-name">
+        <h3>ユーザ名：<%= @user.name %></h3>
       </div>
-    </div>
-  </aside>
-  <div class="col-sm-4" >
-    <P>プロフィール：<%= @user.profile %></P>
   </div>
-</div>
+    <div class="user-profile">     
+      <p>プロフィール：<%= @user.profile %></p>
+    </div>
 
-  <div class="col-sm-8 mt-4">
+  <div class="offset-sm-2 col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><%= link_to 'メッセージ一覧', user_path(@user), class: 'nav-link' %></li>
       <li class="nav-item"><%= link_to 'お気に入り一覧', likes_user_path(@user), class: 'nav-link active' %>

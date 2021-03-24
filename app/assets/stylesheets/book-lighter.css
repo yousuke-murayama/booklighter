@@ -3,7 +3,7 @@
     border: double  5px  #00ff00 
 }
 
-.main {
+.menu {
     text-align: center
 }
 
@@ -14,17 +14,66 @@
     border-radius: 2px;
 }
 
+main {
+   flex:1; 
+}
+
+.layer {
+    position: relative;
+}
+
+.layer p {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #008080;
+    text-align: center;
+    position: absolute;
+    color: #ffffff;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
+}
+
+.layer img {
+    width: 100%;
+    height: 300px;
+}
+
+.layer-before {
+    position: relative;
+}
+
+.layer-before p {
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    color: #ffffff;
+    top: 0;
+}
+
+.layer-before img {
+    width: 100%;
+    height: 400px;
+}
 
 /* トークルームのデザイン */
 .balloon {
   position: relative;
   padding: 20px;
+  margin-left: 20px;
   background-color: #eeffff;
   border: 2px solid #800080;
 }
 
 body {
     background-color: #f5fffa;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
 }
 
 .unlike-btn {
@@ -34,5 +83,44 @@ body {
 h2.room-title {
     margin-bottom: 30px;
     background-color: #ccccff
+}
+
+.user-icon {
+    border-radius: 50%;
+    margin-bottom: 20px;
+    margin-right: 5px;
+}
+
+.post {
+    margin-left: 20px;
+}
+
+.room-name {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+/* ユーザのデザイン */
+.user-deta {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 1px solid #0000ff
+}
+
+.user-name {
+    margin-top: 15px;
+}
+
+.user-profile {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #0000ff;
 }
 
