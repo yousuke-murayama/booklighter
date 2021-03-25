@@ -1,4 +1,4 @@
-<div class='bg-info text-center'>
+<div class='talkroom-view'>
     <h2>トークルーム一覧</h2>
 </div>
 
@@ -7,12 +7,14 @@
         <thead>
             <tr>
                 <th>タイトル</th>
+                <th>作成者</th>
             </tr>
         </thead>
         <tbody>
             <% @rooms.each do |room| %>
                 <tr>
                     <td><%= link_to room.title, room %></td>
+                    <td><%= link_to room.user.name, user_path(room.user) %></td>
                 </tr>
                 <% end %>
         </tbody>
