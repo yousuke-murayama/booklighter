@@ -1,11 +1,19 @@
 class User < ApplicationRecord
-    validates :name, presence: true, length: { maximum: 50 }
+    before_save { self.email.downcase! }
+    
+    VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,16}+\z/.freeze
+    
+    validates :name, presence: true, length: { maximum: 30 }
     validates :profile, presence: true, length: { maximum: 150 }
     validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
+                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i,
+                              message: "が正しくありません"},
                     uniqueness: { case_sensitive: false }
     has_secure_password
-    
+    validates :password, presence: true, length: { minimum: 8 },
+                    format: { with: VALID_PASSWORD_REGEX, 
+                              message: "が正しくありません"}
+                        
     mount_uploader :image, ImageUploader
     
     has_many :rooms
